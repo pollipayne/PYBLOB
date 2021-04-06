@@ -15,9 +15,9 @@ BLACK = (0, 0, 0)
 BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
 
-STARTING_BLUE_BLOBS = 6
-STARTING_GREEN_BLOBS = 5
-STARTING_BLACK_BLOBS = 5
+STARTING_BLUE_BLOBS = 10
+STARTING_GREEN_BLOBS = 15
+STARTING_BLACK_BLOBS = 35
 
 game_display = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Blob World")

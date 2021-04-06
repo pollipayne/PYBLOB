@@ -2,52 +2,36 @@
 
 import pygame
 
-
+from constants import WIDTH, WHITE, HEIGHT, STARTING_BLACK_BLOBS, STARTING_BLUE_BLOBS, STARTING_GREEN_BLOBS
 from BlueBlob import BlueBlob
 from GreenBlob import GreenBlob
 from BlackBlob import BlackBlob
 
 
-WIDTH = 800
-HEIGHT = 600
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-BLUE = (0, 0, 255)
-GREEN = (0, 255, 0)
 
-STARTING_BLUE_BLOBS = 10
-STARTING_GREEN_BLOBS = 15
-STARTING_BLACK_BLOBS = 35
 
 game_display = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Blob World")
+pygame.display.set_caption("Blob Loblaw's Loblaw Law Blobs")
 clock = pygame.time.Clock()
 
-
-
-
-
-
-
-
-
 def draw_environment(blob_list):
-  game_display.fill(WHITE)
-  for blob_dict in blob_list:
-    for blob_id in blob_dict: 
-      blob = blob_dict[blob_id]
-      pygame.draw.circle(game_display, blob.color, [blob.x, blob.y], blob.size)
-      blob.check_bounds()
-      blob.move_fast()
+    game_display.fill(WHITE)
+    for blob_dict in blob_list:
+      for blob_id in blob_dict: 
+        blob = blob_dict[blob_id]
+        blob.draw_self(game_display)
+        blob.move()
+  
 
  
-  pygame.display.update()
+    pygame.display.update()
+
   
 
 def main():
-  blue_blobs = dict(enumerate([BlueBlob(BLUE, WIDTH, HEIGHT) for i in range(STARTING_BLUE_BLOBS)]))
-  green_blobs = dict(enumerate([GreenBlob(GREEN, WIDTH, HEIGHT) for i in range(STARTING_GREEN_BLOBS)]))
-  black_blobs = dict(enumerate([BlackBlob(BLACK, WIDTH, HEIGHT) for i in range(STARTING_BLACK_BLOBS)]))
+  blue_blobs = dict(enumerate([BlueBlob(WIDTH, HEIGHT) for i in range(STARTING_BLUE_BLOBS)]))
+  green_blobs = dict(enumerate([GreenBlob(WIDTH, HEIGHT) for i in range(STARTING_GREEN_BLOBS)]))
+  black_blobs = dict(enumerate([BlackBlob(WIDTH, HEIGHT) for i in range(STARTING_BLACK_BLOBS)]))
 
   while True:
     for event in pygame.event.get():

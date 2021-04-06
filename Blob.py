@@ -1,3 +1,4 @@
+import pygame
 import random
 
 
@@ -12,21 +13,29 @@ class Blob:
     self.y = random.randrange(0, self.y_boundary)
     self.movement_range = movement_range
 
+  def draw_self(self, game_display):
+    pygame.draw.circle(game_display, self.color, [self.x, self.y], self.size)
+
+
+
   def check_bounds(self):
     if self.x < 0: 
       self.x = 0 
-    elif self.x > self.x_boundary: 
-      self.x = self.x_boundary
+    elif self.x > self.x_boundary - self.size: 
+      self.x = self.x_boundary - self.size
     if self.y < 0: 
       self.y = 0
-    elif self.y > self.y_boundary: 
-      self.y = self.y_boundary
+    elif self.y > self.y_boundary - self.size: 
+      self.y = self.y_boundary - self.size
     
 
 
-  def move(self):
+  def move(self, stay_within_bounds=True):
     self.move_x = random.randrange(self.movement_range[0], self.movement_range[1])
     self.move_y = random.randrange(self.movement_range[0], self.movement_range[1])
     self.x += self.move_x
     self.y += self.move_y
+
+    if stay_within_bounds:
+      self.check_bounds()
 

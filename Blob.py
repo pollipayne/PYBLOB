@@ -1,5 +1,6 @@
 import pygame
 import random
+import math
 
 
 class Blob:
@@ -38,4 +39,22 @@ class Blob:
 
     if stay_within_bounds:
       self.check_bounds()
+
+  # def is_touching(self, other_blob):
+  #   return math.sqrt((other_blob.x-self.x)**2 + (other_blob.y-self.y)**2) < (self.size + other_blob.size)
+  #   print(math.sqrt((other_blob.x-self.x)**2 + (other_blob.y-self.y)**2) < (self.size + other_blob.size))
+
+  # def handle_collisions(blob_list):
+  #   blues, reds, greens = blob_list
+  #   for blue_id, blue_blob in blues.copy().items():
+  #       for other_blobs in blues, reds, greens:
+  #           for other_blob_id, other_blob in other_blobs.copy().items():
+  #               if blue_blob == other_blob:
+  #                   pass
+  #               else:
+  #                   if is_touching(blue_blob, other_blob):
+  #                     #insert collision event here
+                            
+  #   return blues, reds, greens
+
 

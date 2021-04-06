@@ -12,3 +12,5 @@ class BlueBlob(Blob):
     self.y += random.randrange(-4, 5)
     if stay_within_bounds:
       self.check_bounds()
+
+  
